@@ -5,12 +5,12 @@
 
     angular.module('LunchCheck',[])
     .controller('LunchCheckController', LunchCheckController);
-    //.controller('LunchController',function($scope){        $scope.name="yakov";    });
 
-    LunchCheckController.$inject=['$scope','$log'];
-   // LunchController.$inject=['$log'];
+
+    LunchCheckController.$inject=['$scope'];
+   // LunchController.$inject=['$log'];   $scope.name= "Yaakov1abc"; 
     function LunchCheckController($scope){
-     $scope.name= "Yaakov1abc"; 
+  
      
      $scope.state="";
 
@@ -20,19 +20,16 @@
 
      $scope.displayState=function()
      {
-     // console.log( $scope.tbinput );
-      //var tArray=[];
       if( $scope.tbinput == undefined || $scope.tbinput=="")
       {
      $scope.state ="Please enter data first";
      }
     else{ 
-    var tArray=$scope.tbinput.split(",");
-     if (tArray.length<=3 )
-     {
-           $scope.state ="Enjoy";
-     }
+      var tArray=$scope.tbinput.split(",");
+      if (tArray.length<=3 )
+        {           $scope.state ="Enjoy";        }
      else{  $scope.state ="Too much!";}
+     
     }
        
      };
