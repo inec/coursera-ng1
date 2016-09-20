@@ -55,7 +55,7 @@
     <div class="col-md-6">
      <h2>Already Bought:</h2>
       <ul ng-controller='AlreadyBroughtShoppingController as showList'>
-       <li ng-repeat="item in showList.items">
+       <li ng-repeat="item in showList.newitems">
          {{ item.quantity }} of {{ item.name }}
        </li>
      </ul>
