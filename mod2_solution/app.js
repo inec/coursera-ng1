@@ -70,7 +70,12 @@ function ShoppingListCheckOffService() {
     var nItem = items.splice(itemIdex, 1);
     console.log(nItem);
       console.log(nItem[0]);
-      this.additem(1,1);
+      
+       var item = {
+      name: "aName",
+      quantity: 9
+    };
+      NewItems.push(item);
       console.log(NewItems.length);
   };
 
