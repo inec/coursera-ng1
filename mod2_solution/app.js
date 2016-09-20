@@ -26,7 +26,7 @@ function AlreadyBroughtShoppingController(ShoppingListCheckOffService) {
   var showList = this;
 
   showList.items = ShoppingListCheckOffService.getItems();
-
+  showList.newitems = ShoppingListCheckOffService.getNewItems();
   showList.removeItem = function (itemIndex) {
     ShoppingListCheckOffService.removeItem(itemIndex);
   };
@@ -81,6 +81,9 @@ function ShoppingListCheckOffService() {
 
   service.getItems = function () {
     return items;
+  };
+  service.getNewItems = function () {
+    return NewItems;
   };
 }
 
