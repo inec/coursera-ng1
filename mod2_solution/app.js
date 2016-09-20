@@ -66,7 +66,8 @@ function ShoppingListCheckOffService() {
 
   service.removeItem = function (itemIdex) {
     console.log(itemIdex);
-    items.splice(itemIdex, 1);
+    var nItem = items.splice(itemIdex, 1);
+    console.log(nItem);
   };
 
   service.getItems = function () {
