@@ -68,6 +68,7 @@ function ShoppingListCheckOffService() {
     console.log(itemIdex);
     var nItem = items.splice(itemIdex, 1);
     console.log(nItem);
+      console.log(nItem[0]);
   };
 
   service.getItems = function () {
