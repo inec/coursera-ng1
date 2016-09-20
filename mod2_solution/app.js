@@ -71,6 +71,7 @@ function ShoppingListCheckOffService() {
     console.log(nItem);
       console.log(nItem[0]);
       this.additem(1,1);
+      console.log(NewItems.length);
   };
 
   service.getItems = function () {
