@@ -71,12 +71,12 @@ function ShoppingListCheckOffService() {
     console.log(nItem);
       console.log(nItem[0]);
       
-       var item = {
+       var oneitem = {
       name: "aName",
       quantity: 9
     };
-      NewItems.push(item);
-      console.log(NewItems.length);
+      NewItems.push(oneitem);
+      console.log(NewItems);
   };
 
   service.getItems = function () {
