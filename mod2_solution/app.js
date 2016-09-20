@@ -37,6 +37,7 @@ function ShoppingListCheckOffService() {
   var service = this;
 
   // List of shopping items
+  var NewItems=[];
   var items = [
   {
     name: "Milk",
@@ -61,7 +62,7 @@ function ShoppingListCheckOffService() {
       name: itemName,
       quantity: quantity
     };
-    items.push(item);
+    newitems.push(item);
   };
 
   service.removeItem = function (itemIdex) {
@@ -69,6 +70,7 @@ function ShoppingListCheckOffService() {
     var nItem = items.splice(itemIdex, 1);
     console.log(nItem);
       console.log(nItem[0]);
+      this.additem(1,1);
   };
 
   service.getItems = function () {
