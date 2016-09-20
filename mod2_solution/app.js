@@ -52,7 +52,7 @@ function ShoppingListCheckOffService() {
   },
   {
     name: "Chocolate",
-    quantity: "5"
+    quantity: "6"
   }
 ];
 
