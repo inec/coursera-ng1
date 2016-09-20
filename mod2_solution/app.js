@@ -10,12 +10,16 @@ angular.module('ShoppingListCheckOff', [])
 
 ToBuyShoppingController.$inject = ['ShoppingListCheckOffService'];
 function ToBuyShoppingController(ShoppingListCheckOffService) {
-  var itemAdder = this;
-
-  itemAdder.itemName = "";
-  itemAdder.itemQuantity = "";
-
-  itemAdder.addItem = function () {
+  //var itemAdder = this;
+    var showList = this;
+  //itemAdder.itemName = "";itemAdder.itemQuantity = "";
+  showList.items = ShoppingListCheckOffService.getItems();
+  
+    showList.removeItem = function (itemIndex) {
+    ShoppingListCheckOffService.removeItem(itemIndex);
+  };
+  
+  showList.addItem = function () {
     ShoppingListCheckOffService.addItem(itemAdder.itemName, itemAdder.itemQuantity);
   }
 }
@@ -25,7 +29,7 @@ AlreadyBroughtShoppingController.$inject = ['ShoppingListCheckOffService'];
 function AlreadyBroughtShoppingController(ShoppingListCheckOffService) {
   var showList = this;
 
-  showList.items = ShoppingListCheckOffService.getItems();
+
   showList.newitems = ShoppingListCheckOffService.getNewItems();
   showList.removeItem = function (itemIndex) {
     ShoppingListCheckOffService.removeItem(itemIndex);
@@ -68,14 +72,9 @@ function ShoppingListCheckOffService() {
   service.removeItem = function (itemIdex) {
     console.log(itemIdex);
     var nItem = items.splice(itemIdex, 1);
-    console.log(nItem);
-      console.log(nItem[0]);
-      
-       var oneitem = {
-      name: "aName",
-      quantity: 9
-    };
-      NewItems.push(oneitem);
+    //console.log(nItem);console.log(nItem[0]);
+      //       var oneitem = {    name: "aName",      quantity: 9};
+      NewItems.push(nItem[0]);
       console.log(NewItems);
   };
 
