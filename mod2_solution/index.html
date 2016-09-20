@@ -3,6 +3,7 @@
   <head>
     <title>Shopping List Check Off</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+   
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <style>
       .emptyMessage {
@@ -22,20 +23,32 @@
       }
     </style>
   </head>
-<body>
+<body ng-app="ShoppingListCheckOff">
   <div class="container">
   <h1>Shopping List Check Off</h1>
 
   <div class="row">
 
     <!-- To Buy List -->
-    <div class="col-md-6">
+    <div class="col-md-6" ng-controller='AlreadyBroughtShoppingController as showList'>
      <h2>To Buy:</h2>
      <ul>
-       <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
-       <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+       <li ng-repeat="item in showList.items">Buy   {{ item.quantity }}  {{ item.name }}
+         <button class="btn btn-default" ng-click="showList.removeItem($index);"><span class="glyphicon glyphicon-ok"></span> Bought</button>
+        </li>
+       <li>Buy 99 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
      </ul>
      <div class="emptyMessage">Everything is bought!</div>
+
+         <div ng-controller='AlreadyBroughtShoppingController as showList'>
+      <ol>
+        <li ng-repeat="item in showList.items">
+          {{ item.quantity }} of {{ item.name }}
+          <button ng-click="showList.removeItem($index);">Remove Item</button>
+        </li>
+      </ol>
+    </div>
+
     </div>
 
     <!-- Already Bought List -->
@@ -48,6 +61,7 @@
     </div>
   </div>
 </div>
-
+   <script src="angular.min.js"></script>
+       <script src="app.js"></script>
 </body>
 </html>
