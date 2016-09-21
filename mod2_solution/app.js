@@ -51,7 +51,18 @@ function ShoppingListCheckOffService() {
     name: "Donuts",
     quantity: "200"
   },
-
+  {
+    name: "cookies",
+    quantity: "10"
+  },
+  {
+    name: "Chips",
+    quantity: "5"
+  },
+  {
+    name: "Juices",
+    quantity: "3"
+  },
   {
     name: "Chocolate",
     quantity: "6"
