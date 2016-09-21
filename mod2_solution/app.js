@@ -45,15 +45,15 @@ function ShoppingListCheckOffService() {
   var items = [
   {
     name: "Milk",
-    quantity: "2"
+    quantity: "3"
   },
   {
     name: "Donuts",
-    quantity: "200"
+    quantity: "22"
   },
   {
     name: "cookies",
-    quantity: "10"
+    quantity: "9"
   },
   {
     name: "Chips",
@@ -78,12 +78,12 @@ function ShoppingListCheckOffService() {
   };
 
   service.removeItem = function (itemIdex) {
-    console.log(itemIdex);
+
     var nItem = items.splice(itemIdex, 1);
-    //console.log(nItem);console.log(nItem[0]);
-      //       var oneitem = {    name: "aName",      quantity: 9};
+    //console.log(nItem);console.log(nItem[0]);   // console.log(itemIdex);
+      //       var oneitem = {    name: "aName",      quantity: 9};console.log(NewItems);
       NewItems.push(nItem[0]);
-      console.log(NewItems);
+      
   };
 
   service.getItems = function () {

@@ -52,10 +52,10 @@
     </div>
 
     <!-- Already Bought List -->
-    <div class="col-md-6" ng-controller='AlreadyBroughtShoppingController as showList'>
+    <div class="col-md-6" ng-controller='AlreadyBroughtShoppingController as newList'>
      <h2>Already Bought:</h2>
       <ul >
-       <li ng-repeat="item in showList.newitems">
+       <li ng-repeat="item in newList.newitems">
         Bought {{ item.quantity }}  {{ item.name }}
        </li>
      </ul>
@@ -63,7 +63,7 @@
        <li>Bought 10 cookies</li>
      </ul>-->
      
-     <div class="emptyMessage" ng-if="!showList.newitems.length">Nothing bought yet.</div>
+     <div class="emptyMessage" ng-if="!newList.newitems.length">Nothing bought yet.</div>
     </div>
   </div>
 </div>
