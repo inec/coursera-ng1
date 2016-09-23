@@ -11,15 +11,15 @@ angular.module('ShoppingListCheckOff', [])
 ToBuyShoppingController.$inject = ['ShoppingListCheckOffService'];
 function ToBuyShoppingController(ShoppingListCheckOffService) {
   //var itemAdder = this;
-    var showList = this;
+    var buyList = this;
   //itemAdder.itemName = "";itemAdder.itemQuantity = "";
-  showList.items = ShoppingListCheckOffService.getItems();
+ buyList.items = ShoppingListCheckOffService.getItems();
   
-    showList.removeItem = function (itemIndex) {
+    buyList.removeItem = function (itemIndex) {
     ShoppingListCheckOffService.removeItem(itemIndex);
   };
   
-  showList.addItem = function () {
+  buyList.addItem = function () {
     ShoppingListCheckOffService.addItem(itemAdder.itemName, itemAdder.itemQuantity);
   }
 }

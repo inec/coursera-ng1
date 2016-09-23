@@ -30,15 +30,15 @@
   <div class="row">
 
     <!-- To Buy List -->
-    <div class="col-md-6" ng-controller='ToBuyShoppingController as showList'>
+    <div class="col-md-6" ng-controller='ToBuyShoppingController as buyList'>
      <h2>To Buy:</h2>
      <ul>
-       <li ng-repeat="item in showList.items">Buy   {{ item.quantity }}  {{ item.name }}
-         <button class="btn btn-default" ng-click="showList.removeItem($index);"><span class="glyphicon glyphicon-ok"></span> Bought</button>
+       <li ng-repeat="item in buyList.items">Buy   {{ item.quantity }}  {{ item.name }}
+         <button class="btn btn-default" ng-click="buyList.removeItem($index);"><span class="glyphicon glyphicon-ok"></span> Bought</button>
         </li>
        <!--<li>Buy 99 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>-->
      </ul>
-     <div class="emptyMessage" ng-if="!showList.items.length">Everything is bought! </div>
+     <div class="emptyMessage" ng-if="!buyList.items.length">Everything is bought! </div>
 
      <!--<div ng-controller='ToBuyShoppingController as showList'>
       <ol>
