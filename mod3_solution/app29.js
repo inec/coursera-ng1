@@ -4,7 +4,7 @@
 angular.module('ShoppingListDirectiveApp', [])
 .controller('ShoppingListController', ShoppingListController)
 .factory('ShoppingListFactory', ShoppingListFactory)
-// .controller('ShoppingListDirectiveController', ShoppingListDirectiveController)
+ .controller('ShoppingListDirectiveController', ShoppingListDirectiveController)
 .directive('shoppingList', ShoppingListDirective);
 
 
@@ -15,9 +15,9 @@ function ShoppingListDirective() {
       items: '<',
       title: '@'
     },
-    // controller: 'ShoppingListDirectiveController as list',//con
-    controller: ShoppingListDirectiveController,
-    controllerAs: 'list',
+ controller: 'ShoppingListDirectiveController as list',//con
+//    controller: ShoppingListDirectiveController,
+  //  controllerAs: 'list',
     bindToController: true
   };
 
@@ -26,7 +26,7 @@ function ShoppingListDirective() {
 
 
 function ShoppingListDirectiveController() {
-  var list = this;
+  var list = this;//
 
   list.cookiesInList = function () {
     for (var i = 0; i < list.items.length; i++) {
