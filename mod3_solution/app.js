@@ -11,9 +11,10 @@ NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService) {
   var menu = this;
 
-  var promise = MenuSearchService.getMenuCategories();
+  var promise = MenuSearchService.getMenuCategories("wk");
 
   promise.then(function (response) {
+
     menu.categories = response.data;
   })
   .catch(function (error) {
@@ -38,26 +39,37 @@ MenuSearchService.$inject = ['$http', 'ApiBasePath']
 function MenuSearchService($http, ApiBasePath) {
   var service = this;
 
-  service.getMenuCategories = function () {
-    var response = $http({
+  service.getMenuCategories = function (keyw) {
+    //var response =
+    return $http({
       method: "GET",
       url: (ApiBasePath + "/categories.json")
-    });
+    }).then(function (result) {
+    // process result and only keep items that match
+    var foundItems=[];//
+console.log("res",keyw);
+console.log(result.data.length);
+    // return processed items
+    return result;
+});
 
-    return response;
+
+   // return response;
   };
 
 
   service.getMenuForCategory = function (shortName) {
-    var response = $http({
+    console.log("shar="+shortName)
+    //var response = 
+    return $http({
       method: "GET",
       url: (ApiBasePath + "/menu_items.json"),
       params: {
         category: shortName
       }
     });
-
-    return response;
+  
+   // return response;
   };
 
 }
