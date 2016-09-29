@@ -2,16 +2,18 @@
 'use strict';
 
 angular.module('NarrowItDownApp', [])
-.controller('NarrowItDownController', NarrowItDownController)
-.service('MenuSearchService', MenuSearchService)
+.controller('MenuCategoriesController', MenuCategoriesController)
+.service('MenuCategoriesService', MenuCategoriesService)
 .constant('ApiBasePath', "http://davids-restaurant.herokuapp.com");
+//constant
+
+MenuCategoriesController.$inject = ['MenuCategoriesService'];
 
 
-NarrowItDownController.$inject = ['MenuSearchService'];
-function NarrowItDownController(MenuSearchService) {
+function MenuCategoriesController(MenuCategoriesService) {
   var menu = this;
 
-  var promise = MenuSearchService.getMenuCategories();
+  var promise = MenuCategoriesService.getMenuCategories();
 
   promise.then(function (response) {
     menu.categories = response.data;
@@ -21,7 +23,8 @@ function NarrowItDownController(MenuSearchService) {
   });
 
   menu.logMenuItems = function (shortName) {
-    var promise = MenuSearchService.getMenuForCategory(shortName);
+    
+    var promise = MenuCategoriesService.getMenuForCategory(shortName);
 
     promise.then(function (response) {
       console.log(response.data);
@@ -33,9 +36,9 @@ function NarrowItDownController(MenuSearchService) {
 
 }
 
-
-MenuSearchService.$inject = ['$http', 'ApiBasePath']
-function MenuSearchService($http, ApiBasePath) {
+//
+MenuCategoriesService.$inject = ['$http', 'ApiBasePath']
+function MenuCategoriesService($http, ApiBasePath) {
   var service = this;
 
   service.getMenuCategories = function () {
@@ -47,7 +50,7 @@ function MenuSearchService($http, ApiBasePath) {
     return response;
   };
 
-
+//Service
   service.getMenuForCategory = function (shortName) {
     var response = $http({
       method: "GET",

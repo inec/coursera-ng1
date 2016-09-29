@@ -22,8 +22,22 @@
 
     <!-- found-items should be implemented as a component -->
     <found-items found-items="...." on-remove="...."></found-items>
+        <div ng-controller='NarrowItDownController as menu'>
+      <h3>abc</h3>
+      <ul>
+        <li ng-repeat="category in menu.categories">
+          (<a href="" ng-click="menu.logMenuItems(category.short_name);">{{ category.short_name }}</a>)
+          {{ category.name }}
+        </li>
+      </ul>
+    </div>
+
+
+
+
+
   </div>
-<script src="../mod2_solution/angular.min.js"></script>
-<script src="./app29.js"></script>
+<script src="angular.min.js"></script>
+<script src="./app.js"></script>
 </body>
 </html>
