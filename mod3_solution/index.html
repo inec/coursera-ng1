@@ -23,10 +23,11 @@
     <!-- found-items should be implemented as a component -->
     <found-items found-items="...." on-remove="...."></found-items>
         <div ng-controller='NarrowItDownController as menu'>
-      <h3>abc</h3>
+      <h3>a-{{menu.logMenuItems}}-a</h3>
+	   <h3>a-{{menu.categories.length }}-da</h3>
       <ul>
         <li ng-repeat="category in menu.categories">
-          (<a href="" ng-click="menu.logMenuItems(category.short_name);">{{ category.short_name }}</a>)
+          
           {{ category.name }}
         </li>
       </ul>
