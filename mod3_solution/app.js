@@ -5,7 +5,16 @@ angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController', NarrowItDownController)
 .service('MenuSearchService', MenuSearchService)
 .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com")
-.directive('shoppingList', ShoppingListDirective);
+.directive('listItem', ListItem);
+
+
+function ListItem() {
+  var ddo = {
+    templateUrl: 'listItem.html'
+  };
+
+  return ddo;
+}
 
 
 function ShoppingListDirective() {
@@ -71,7 +80,8 @@ function MenuSearchService($http, ApiBasePath) {
     var foundItems=[1];//
 console.log("res ",keyw);
 console.log(result.data.menu_items.length);
-    for (var i = 0; i < result.data.menu_items.length; i++) {
+
+    for (var i = 0; i < 10; i++) {
       var desc = result.data.menu_items[i].description;
 	  //console.log(desc);
 	  foundItems.push(result.data.menu_items[i]);
