@@ -10,7 +10,7 @@ angular.module('NarrowItDownApp', [])
 
 function ListItem() {
   var ddo = {
-    templateUrl: 'listItem.html'
+    templateUrl: 'foundItem.html'
   };
 
   return ddo;
@@ -77,7 +77,7 @@ function MenuSearchService($http, ApiBasePath) {
       url: (ApiBasePath + "/menu_items.json")
     }).then(function (result) {
     // process result and only keep items that match  categories.json menu_items.json
-    var foundItems=[1];//
+    var foundItems=[];//
 console.log("res ",keyw);
 console.log(result.data.menu_items.length);
 
