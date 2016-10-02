@@ -1,4 +1,4 @@
 <li>
- {{ category.name }}
-  <button ng-click="list.removeItem($index);">found-Remove Item</button>
+ {{ category.name }},   {{ category.short_name }},  {{ category.description}}
+  <button ng-click="menu.removeItem({index: $index});">Don't want this one!</button>
 </li>
