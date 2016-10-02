@@ -38,20 +38,24 @@ function ShoppingListDirective() {
 NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService) {
   var menu = this;
-
-  var promise = MenuSearchService.getMenuCategories("wk");
+  var keyword="egg";
+  console.log("L-42-"+keyword);
+  var promise = MenuSearchService.getMenuCategories(keyword);
 
   promise.then(function (response) {
 
     menu.categories = response;//.dat;
-	console.log(response);
+
   })
   .catch(function (error) {
     console.log("Something went terribly wrong.");
   });
   
-  menu.t=promise;
-  menu.logMenuItems = function (shortName) {
+  menu.key="abc";
+menu.logMenuItems = function (shortName) {
+console.log("L-55"+shortName);
+};
+  /*menu.logMenuItems = function (shortName) {
     var promise = MenuSearchService.getMenuForCategory("ww");//shortName
 
     promise.then(function (response) {
@@ -61,7 +65,7 @@ function NarrowItDownController(MenuSearchService) {
     .catch(function (error) {
       console.log(error);
     })
-  };
+  };*/
 
 }
 
@@ -78,15 +82,19 @@ function MenuSearchService($http, ApiBasePath) {
     }).then(function (result) {
     // process result and only keep items that match  categories.json menu_items.json
     var foundItems=[];//
-console.log("res ",keyw);
-console.log(result.data.menu_items.length);
+console.log("L81-res "+keyw+ " --"+result.data.menu_items.length);
 
-    for (var i = 0; i < 10; i++) {
+
+    for (var i = 0; i < 30; i++) {
       var desc = result.data.menu_items[i].description;
 	  //console.log(desc);
-	  foundItems.push(result.data.menu_items[i]);
-      if (desc.toLowerCase().indexOf("cookie") !== -1) {
+	 	
+	
+		//console.log("-"+desc.toLowerCase().indexOf("oup"));
+      if (desc.toLowerCase().indexOf(keyw) !== -1) {
         //foundItem.
+		//console.log(desc);
+	 foundItems.push(result.data.menu_items[i]);
       }
     }
     // return processed items
