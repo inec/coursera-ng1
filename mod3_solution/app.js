@@ -21,6 +21,7 @@ function FoundItems() {
   var ddo = {
     templateUrl: 'foundItems.html',
     scope: {
+	  //found :'<','=foundItem',
       menu : '=foundItem',
 	  titlep:'@titleA',
 	  //onRemove: '@removeItem',
