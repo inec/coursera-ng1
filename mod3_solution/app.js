@@ -5,8 +5,8 @@ angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController', NarrowItDownController)
 .service('MenuSearchService', MenuSearchService)
 .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com")
-.directive('shoppingList', FhoppingItem);
-
+.directive('foundItems', FoundItems);
+//.directive('foundItems', FoundItems);
 /*.directive('listItem', ListItem);
 function ListItem() {
   var ddo = {
@@ -17,11 +17,11 @@ function ListItem() {
 
   return ddo;
 }*/
-function FhoppingItem() {
+function FoundItems() {
   var ddo = {
     templateUrl: 'foundItems.html',
     scope: {
-      menu : '=foundItems',
+      menu : '=foundItem',
 	  titlep:'@titleA',
 	  //onRemove: '@removeItem',
       title: '@title'
@@ -36,28 +36,30 @@ function FhoppingItem() {
 NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService) {
   var menu = this;
-  var found=[];
+  menu.found=[];
   menu.keyw="";
   menu.title="Smenutile-36E";
    menu.titleA="S-AA-E";
+
+   
+   
 menu.lookupMenuItems = function () {
   
-  //onsole.log("L-42-"+ menu.keyw);
-  var promise = MenuSearchService.getMenuCategories(menu.keyw);
 
-  promise.then(function (response) {
+var promise = MenuSearchService.getMatchedMenuItems(menu.keyw);
+
+promise.then(function (response) {
 
     menu.categories = response;//.dat;
     found=response;
-    //onsole.log("L39-found.length is "+found.length);
+   
   })
   .catch(function (error) {
     console.log("Something went terribly wrong.");
   });
   
-
-
 //onsole.log("L-55"+menu.keyw);
+
 };
 
 // list.removeItem
@@ -72,22 +74,45 @@ menu.removeItem = function (itemIndex) {
     //shoppingList.removeItem(itemIndex);
     //this.title = origTitle + " (" + list.items.length + " items )";
 };
+
 menu.onRemove = function (itemIndex) {
 
-    console.log(itemIndex.index);
+    //onsole.log(itemIndex.index);
     //onsole.log("l-67"+found.length);
-    console.log("'this' is: ", this);
+    //onsole.log("'this' is: ", this);
     found.splice(itemIndex.index,1);
  
-   // this.lastRemoved = "Last item removed was " + this.items[itemIndex].name;
-    //shoppingList.removeItem(itemIndex);
-    //this.title = origTitle + " (" + list.items.length + " items )";
+
 };
-menu.test=function()
+
+menu.notFound=function(){
+
+if (menu.keyw.trim()=="")
 {
-console.log("L-78");
+ return true;
+
 }
-  /*menu.logMenuItems = function (shortName) {
+else
+{
+ if (found.length==0)
+ {
+  return true;
+  
+ }
+ else
+ {
+ return false;;
+ }
+}
+};
+
+
+  /*
+  menu.notFound=function()
+{
+return true;
+};
+  menu.logMenuItems = function (shortName) {
     var promise = MenuSearchService.getMenuForCategory("ww");//shortName
 
     promise.then(function (response) {
@@ -106,34 +131,34 @@ MenuSearchService.$inject = ['$http', 'ApiBasePath']
 function MenuSearchService($http, ApiBasePath) {
   var service = this;
 
-  service.getMenuCategories = function (keyw) {
-    //var response =
+  service.getMatchedMenuItems = function (keyw) {
+    //var response =getMatchedMenuItems getMenuCategories
+	
     return $http({
       method: "GET",
       url: (ApiBasePath + "/menu_items.json")
     }).then(function (result) {
     // process result and only keep items that match  categories.json menu_items.json
-    var foundItems=[];//
- //onsole.log("L81-res "+keyw+ " --"+result.data.menu_items.length);
+	
+    var foundItemss=[];
+    var tcount=result.data.menu_items.length;
+    tcount=30;
+	keyw=keyw.toLowerCase();
 
-var tcount=result.data.menu_items.length;
-tcount=30;
+if (keyw.trim()!=""){	
     for (var i = 0; i < tcount; i++) {
       var desc = result.data.menu_items[i].description;
-	  //console.log(desc);
-	 	
-	keyw=keyw.toLowerCase();
-		//console.log("-"+desc.toLowerCase().indexOf("oup"));
       if (desc.toLowerCase().indexOf(keyw) !== -1) {
-        //foundItem.
-
-	 foundItems.push(result.data.menu_items[i]);
+    	 foundItemss.push(result.data.menu_items[i]);
       }
     }
+}	
     // return processed items
-	console.log(foundItems.length);
-    return foundItems;
-});
+	console.log(foundItemss.length);
+    return foundItemss;
+
+}
+);
 
 
    // return response;

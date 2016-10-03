@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles/styles.css">
   </head>
 <body ng-app='NarrowItDownApp'>
-   <div class="container" ng-controller='NarrowItDownController as menu'>
+  <div class="container" ng-controller='NarrowItDownController as menu'>
     <h1>Narrow Down Your Chinese Menu Choice</h1>
 
     <div class="form-group">
@@ -19,31 +19,20 @@
 
     <!-- Bonus loader (see Bonus section of the assignment) -->
     <items-loader-indicator></items-loader-indicator>
-
-    <!-- found-items should be implemented as a component -->
-    <found-items found-items="...." on-remove="...."></found-items>
-        <!--<div ng-controller='NarrowItDownController as menu'>-->
     <div class="row">
 		<div  class="col-sm-12">
-      <shopping-list found-items="menu" title="{{menu.title}}" on-remove="menu.test"></shopping-list>
-	    <!--   <ul>
-       <list-item ng-repeat="category in menu.categories" on-remove="category.removeItem(index)" >-na-</list-item>
-      </ul>
-  <ul>
-        <li ng-repeat="category in menu.categories">
-          
-          li-{{ category.name }}
-        </li>
-      </ul>-->
+    <!-- found-items should be implemented as a component -->
+    <found-items found-item="menu" title="{{menu.title}}" on-remove="menu.test">
+   </found-items>
+
 	  
 	  
     </div>
 </div>
 
 
+</div>
 
-
-  </div>
 <script src="angular.min.js"></script>
 <script src="./app.js"></script>
 </body>

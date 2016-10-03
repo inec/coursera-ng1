@@ -1,5 +1,5 @@
 
-<h3>fi</h3>
+<h3>{{fi}}{{found.length}}</h3>
 <ul>
  
  <li ng-repeat="category in menu.categories">
@@ -9,7 +9,8 @@
  </li>
  
 </ul>
-<div class="error" ng-if="list.cookiesInList()">WARNING! WARNING! COOKIES DETECTED!</div>
+{{menu.test()}}
+<div class="error" ng-if="menu.notFound()">Nothing found!</div>
 
 <!--<li>
  {{ category.name }},   {{ category.short_name }},  {{ category.description}}
