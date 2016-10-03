@@ -70,7 +70,7 @@ menu.removeItem = function (itemIndex) {
     console.log(itemIndex);
     //onsole.log("l-67"+found.length);
     console.log("'this' is: ", this);
-    found.splice(itemIndex+1,1);
+    menu.found.splice(itemIndex+1,1);
  
    // this.lastRemoved = "Last item removed was " + this.items[itemIndex].name;
     //shoppingList.removeItem(itemIndex);
@@ -82,7 +82,7 @@ menu.onRemove = function (itemIndex) {
     //onsole.log(itemIndex.index);
     //onsole.log("l-67"+found.length);
     //onsole.log("'this' is: ", this);
-    found.splice(itemIndex.index,1);
+    menu.found.splice(itemIndex.index,1);
  
 
 };
