@@ -37,10 +37,11 @@ function FoundItems() {
 NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService) {
   var menu = this;
+  
   menu.found=[];
   menu.keyw="";
   menu.title="Smenutile-36E";
-   menu.titleA="S-AA-E";
+  menu.titleA="S-AA-E";
 
    
    
@@ -51,9 +52,9 @@ var promise = MenuSearchService.getMatchedMenuItems(menu.keyw);
 
 promise.then(function (response) {
 
-    //menu.categories = response;//.dat;
+    menu.categories = response;//.dat;
     menu.found=response;
-   
+   //onsole.log("L-57="+menu.found.length);
   })
   .catch(function (error) {
     console.log("Something went terribly wrong.");
@@ -87,7 +88,7 @@ menu.onRemove = function (itemIndex) {
 };
 
 menu.notFound=function(){
-
+console.log("menu.found "+menu.found.length);
 if (menu.keyw.trim()=="")
 {
  return true;
@@ -177,7 +178,7 @@ if (keyw.trim()!=""){
       }
     });
   
-   // return response;
+   
   };
  
 /*function ShoppingListDirectiveController() {
