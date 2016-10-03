@@ -144,7 +144,7 @@ function MenuSearchService($http, ApiBasePath) {
 	
     var foundItemss=[];
     var tcount=result.data.menu_items.length;
-    tcount=30;
+    //tcount=30;
 	keyw=keyw.toLowerCase();
 
 if (keyw.trim()!=""){	
