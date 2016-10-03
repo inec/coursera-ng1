@@ -51,8 +51,8 @@ var promise = MenuSearchService.getMatchedMenuItems(menu.keyw);
 
 promise.then(function (response) {
 
-    menu.categories = response;//.dat;
-    found=response;
+    //menu.categories = response;//.dat;
+    menu.found=response;
    
   })
   .catch(function (error) {
@@ -95,7 +95,7 @@ if (menu.keyw.trim()=="")
 }
 else
 {
- if (found.length==0)
+ if (menu.found.length==0)
  {
   return true;
   
