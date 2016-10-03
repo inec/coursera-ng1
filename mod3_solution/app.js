@@ -5,9 +5,9 @@ angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController', NarrowItDownController)
 .service('MenuSearchService', MenuSearchService)
 .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com")
-.directive('listItem', ListItem);
-//.directive('listItem', ListItem);
+.directive('shoppingList', FhoppingItem);
 
+/*.directive('listItem', ListItem);
 function ListItem() {
   var ddo = {
     
@@ -16,9 +16,21 @@ function ListItem() {
   };
 
   return ddo;
+}*/
+function FhoppingItem() {
+  var ddo = {
+    templateUrl: 'foundItems.html',
+    scope: {
+      menu : '=foundItems',
+	  titlep:'@titleA',
+	  //onRemove: '@removeItem',
+      title: '@title'
+	  
+    }
+  };
+
+  return ddo;
 }
-
-
 
 
 NarrowItDownController.$inject = ['MenuSearchService'];
@@ -26,17 +38,18 @@ function NarrowItDownController(MenuSearchService) {
   var menu = this;
   var found=[];
   menu.keyw="";
-  menu.title="menutile";
+  menu.title="Smenutile-36E";
+   menu.titleA="S-AA-E";
 menu.lookupMenuItems = function () {
   
-  console.log("L-42-"+ menu.keyw);
+  //onsole.log("L-42-"+ menu.keyw);
   var promise = MenuSearchService.getMenuCategories(menu.keyw);
 
   promise.then(function (response) {
 
     menu.categories = response;//.dat;
     found=response;
-    console.log("L39-found.length is "+found.length);
+    //onsole.log("L39-found.length is "+found.length);
   })
   .catch(function (error) {
     console.log("Something went terribly wrong.");
@@ -44,21 +57,36 @@ menu.lookupMenuItems = function () {
   
 
 
-console.log("L-55"+menu.keyw);
+//onsole.log("L-55"+menu.keyw);
 };
 
 // list.removeItem
 menu.removeItem = function (itemIndex) {
 
     console.log(itemIndex);
-      console.log(found.length);
+    //onsole.log("l-67"+found.length);
     console.log("'this' is: ", this);
-    found.splice(itemIndex,1);
-    console.log(found.length);
+    found.splice(itemIndex+1,1);
+ 
    // this.lastRemoved = "Last item removed was " + this.items[itemIndex].name;
     //shoppingList.removeItem(itemIndex);
     //this.title = origTitle + " (" + list.items.length + " items )";
 };
+menu.onRemove = function (itemIndex) {
+
+    console.log(itemIndex.index);
+    //onsole.log("l-67"+found.length);
+    console.log("'this' is: ", this);
+    found.splice(itemIndex.index,1);
+ 
+   // this.lastRemoved = "Last item removed was " + this.items[itemIndex].name;
+    //shoppingList.removeItem(itemIndex);
+    //this.title = origTitle + " (" + list.items.length + " items )";
+};
+menu.test=function()
+{
+console.log("L-78");
+}
   /*menu.logMenuItems = function (shortName) {
     var promise = MenuSearchService.getMenuForCategory("ww");//shortName
 
@@ -86,7 +114,7 @@ function MenuSearchService($http, ApiBasePath) {
     }).then(function (result) {
     // process result and only keep items that match  categories.json menu_items.json
     var foundItems=[];//
- console.log("L81-res "+keyw+ " --"+result.data.menu_items.length);
+ //onsole.log("L81-res "+keyw+ " --"+result.data.menu_items.length);
 
 var tcount=result.data.menu_items.length;
 tcount=30;

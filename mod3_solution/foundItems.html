@@ -1,4 +1,18 @@
-<li>
+
+<h3>fi</h3>
+<ul>
+ 
+ <li ng-repeat="category in menu.categories">
+ {{ category.name }},   {{ category.short_name }},  {{ category.description}}
+  <button ng-click="menu.onRemove({index: $index});">Don't want this one!</button>
+
+ </li>
+ 
+</ul>
+<div class="error" ng-if="list.cookiesInList()">WARNING! WARNING! COOKIES DETECTED!</div>
+
+<!--<li>
  {{ category.name }},   {{ category.short_name }},  {{ category.description}}
   <button ng-click="menu.removeItem({index: $index});">Don't want this one!s</button>
 </li>
+-->

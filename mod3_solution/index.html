@@ -25,11 +25,11 @@
         <!--<div ng-controller='NarrowItDownController as menu'>-->
     <div class="row">
 		<div  class="col-sm-12">
-
-	   <ul>
-       <list-item ng-repeat="category in menu.categories" on-remove="category.removeItem(index)" >-n-</list-item>
+      <shopping-list found-items="menu" title="{{menu.title}}" on-remove="menu.test"></shopping-list>
+	    <!--   <ul>
+       <list-item ng-repeat="category in menu.categories" on-remove="category.removeItem(index)" >-na-</list-item>
       </ul>
-     <!-- <ul>
+  <ul>
         <li ng-repeat="category in menu.categories">
           
           li-{{ category.name }}
