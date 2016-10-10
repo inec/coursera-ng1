@@ -1,19 +1,30 @@
 (function () {
 "use strict";
 
-angular.module('MenuApp')
+angular.module('data')
 .service('MenuDataService', MenuDataService);
 
 
-MenuDataService.$inject = ['$http', 'ApiPath'];
+MenuDataService.$inject = ['$http'];
 function MenuService($http, ApiPath) {
   var service = this;
 
-  service.getCategories = function () {
-    return $http.get(ApiPath + '/categories.json').then(function (response) {
+  service.getAllCategories = function () {
+    var promise= $http.get('https://davids-restaurant.herokuapp.com/categories.json').then(function (response) {
       return response.data;
     });
+
+    return promise;
   };
+
+  service.getItemForCategory = function () {
+    var promise= $http.get('https://davids-restaurant.herokuapp.com/categories.json').then(function (response) {
+      return response.data;
+    });
+
+    return promise;
+  };
+
 
 }
 
